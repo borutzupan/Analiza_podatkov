@@ -1,9 +1,8 @@
 # Analiza_podatkov
 ## Manga
 
-Analiziral bom prvih 1000 manga.
-
-[Mangakakalot](http://mangakakalot.com/manga_list?type=topview&category=all&state=all&page=1)
+Analiziral bom prvih 1000 manga na strani
+[Mangakakalot](http://mangakakalot.com/manga_list?type=topview&category=all&state=all&page=1).
 
 Za vsako mango bom zajel:
 * število ogleda

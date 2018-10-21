@@ -13,5 +13,5 @@ Za vsako mango bom zajel:
 Delovne hipoteze:
 * Ali obstaja povezava med številom ogleda in žanrom?
 * Kateri žanri so najbolj gledani?
-* Kateri žanri so najbolj ocenjeni?
+* Kateri žanri so najslabše ocenjeni?
 * Kateri avtorji imajo najboljšo povprečno oceno?

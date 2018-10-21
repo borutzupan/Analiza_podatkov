@@ -2,7 +2,8 @@
 ## Manga
 
 Analiziral bom prvih 1000 manga.
-[IMDB](http://mangakakalot.com/manga_list?type=topview&category=all&state=all&page=1).
+
+[Mangakakalot](http://mangakakalot.com/manga_list?type=topview&category=all&state=all&page=1).
 
 Za vsako mango bom zajel:
 * število ogleda

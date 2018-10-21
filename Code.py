@@ -29,3 +29,16 @@ def save_string_to_file(text, directory, filename):
 def save_frontpage(url):
     text = download_url_to_string(url)
     return save_string_to_file(text, direktorij, frontpage)
+
+with open('frontpage.html', encoding="utf-8") as fp:
+    vsebina = fp.read()
+
+
+def find_names(page):
+    regex = re.compile(r'<a.*? href="https?://.*?\.com/manga/(.*?)" title="(.*?)">\2</a>', flags=re.DOTALL)
+    return [x.group(2) for x in re.finditer(regex, page)][20:]
+
+
+print(find_names(vsebina))
+regex = re.compile(r'<a.*? href="(https?://.*?\.com/manga/.*?)" title="(.*?)">\2</a>', flags=re.DOTALL)
+seznam = [x.group(1) for x in re.finditer(regex, vsebina)]

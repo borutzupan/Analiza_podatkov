@@ -1,17 +1,20 @@
 # Analiza_podatkov
-## Manga
+## Anime
 
-Analiziral bom prvih 700 manga na strani
-[Mangakakalot](http://mangakakalot.com/manga_list?type=topview&category=all&state=all&page=1).
+Analiziral bom prvih 1500 anime na strani
+[Anime-planet](https://www.anime-planet.com/anime/all).
 
 Za vsako mango bom zajel:
-* število ogleda
-* avtorja
-* žanre in opis
+* naslov
+* studio
+* število episod
+* leto izida
+* žanre (glede na taga s spletne strani) in opis
 * povprečno oceno
 
 Delovne hipoteze:
-* Ali obstaja povezava med številom ogleda in žanrom?
-* Kateri žanri so najbolj gledani?
+* Ali obstaja povezava med številom episod in žanrom?
+* Kateri studii so najbolj ocenjeni?
 * Kateri žanri so najslabše ocenjeni?
-* Kateri avtorji imajo najboljšo povprečno oceno?
+* Kateri studii izdajo največ anime?
+* Ali so anime, ki so izšli kasneje bolje ocenjeni?

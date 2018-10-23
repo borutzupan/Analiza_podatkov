@@ -9,7 +9,7 @@ Za vsako mango bom zajel:
 * studio
 * število episod
 * leto izida
-* žanre (glede na taga s spletne strani) in opis
+* žanre (glede na zazanamke s spletne strani) in opis
 * povprečno oceno
 
 Delovne hipoteze:

@@ -5,7 +5,7 @@ import os
 
 spletna_stran = 'https://www.anime-planet.com/anime/all'
 direktorij = 'Analiza_podatkov_pages'
-csv_file = 'Analiza_csv'
+csv_file = 'analiza_csv'
 frontpage = 'frontpage.html'
 
 
@@ -62,7 +62,7 @@ def get_data(page):
 
     def add_alt_title(page):
         if re.search(pattern_2, page) is None:
-            return 'No alternative title'
+            return 'No alternative titles'
         else:
             return re.search(pattern_2, page).groupdict()['alt_title']
 
@@ -72,6 +72,12 @@ def get_data(page):
         string = string.split(', ')
         return string
 
+    def make_intiger_for(string):
+        string = string.replace(' eps', '')
+        string = string.replace(' ep', '')
+        string = string.replace('+', '')
+        return int(string)
+  
     dict = {}
     dict['title'] = re.search(pattern, page).groupdict()['title']
     dict['alt_title'] = add_alt_title(page)
@@ -88,13 +94,22 @@ def get_data(page):
     if 'TV' in dict['type']:
         dict['type'] = dict['type'] + ' Series'
 
-    dict['num_of_ep'] = dict['num_of_ep'].replace(' eps', '')
-    dict['num_of_ep'] = int(dict['num_of_ep'].replace(' ep', ''))
+    dict['num_of_ep'] = make_intiger_for(dict['num_of_ep'])
     dict['description'] = dict['description'].replace('&nbsp;', ' ')
     dict['tags'] = make_list_for(dict['tags'])
     return dict
 
 
+def dicts_in_list(directory, filename):
+    list = []
+    content = read_file_to_string(directory, filename)
+    blocks = cut_into_blocks(content)
+    for i in range(len(blocks)):
+        list.append(get_data(blocks[i]))
+    return list
+
+
 vsebina = read_file_to_string(direktorij, frontpage)
 bloki = cut_into_blocks(vsebina)
 b0 = get_data(bloki[0])
+l_of_d = dicts_in_list(direktorij, frontpage)

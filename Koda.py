@@ -5,8 +5,8 @@ import os
 
 spletna_stran = 'https://www.anime-planet.com/anime/all'
 direktorij = 'Analiza_podatkov_pages'
-csv_file = 'analiza_csv'
-frontpage = 'frontpage.html'
+csv_file = 'anime-planet.csv'
+frontpage = 'anime-planet.html'
 
 
 def download_url_to_string(url):
@@ -77,7 +77,7 @@ def get_data(page):
         string = string.replace(' ep', '')
         string = string.replace('+', '')
         return int(string)
-  
+
     dict = {}
     dict['title'] = re.search(pattern, page).groupdict()['title']
     dict['alt_title'] = add_alt_title(page)
@@ -101,15 +101,31 @@ def get_data(page):
 
 
 def dicts_in_list(directory, filename):
-    list = []
     content = read_file_to_string(directory, filename)
     blocks = cut_into_blocks(content)
-    for i in range(len(blocks)):
-        list.append(get_data(blocks[i]))
+    list = [get_data(blocks[i]) for i in range(len(blocks))]
     return list
 
 
-vsebina = read_file_to_string(direktorij, frontpage)
-bloki = cut_into_blocks(vsebina)
-b0 = get_data(bloki[0])
-l_of_d = dicts_in_list(direktorij, frontpage)
+def write_csv(fieldnames, rows, directory, filename):
+    os.makedirs(directory, exist_ok=True)
+    path = os.path.join(directory, filename)
+    with open(path, 'w') as csv_file:
+        writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+        writer.writeheader()
+        for row in rows:
+            writer.writerow(row)
+    return None
+
+
+def write_data_in_csv(fieldnames):
+    rows = dicts_in_list(direktorij, frontpage)
+    return write_csv(fieldnames, rows, direktorij, csv_file)
+
+
+def download_pages(num_of_pages):
+    for i in range(1, num_of_pages + 1):
+        filename = frontpage[:-5] + '_page_{}'.format(i) + frontpage[-5:]
+        url = 'https://www.anime-planet.com/anime/all?page={}'.format(i)
+        save_page(url, filename)
+    return None

@@ -2,9 +2,11 @@ import requests
 import re
 import csv
 import os
+import html
 
 spletna_stran = 'https://www.anime-planet.com/anime/all'
 direktorij = 'Analiza_podatkov_pages'
+direktorij_csv = 'Analiza_podatkov_csv'
 csv_file = 'anime-planet.csv'
 frontpage = 'anime-planet.html'
 
@@ -49,22 +51,26 @@ def get_data(page):
     pattern = re.compile(
         r'''<a title="<h5>(?P<title>.*?)</h5>.*?'''
         r'''<li class='type'>(?P<type>.*?) \((?P<num_eps>.*?)\)</li>'''
-        r'''<li>(?P<studio>.*?)</li>.*?'''
-        r'''iconYear'>(?P<year>.*?)(?: - .*?)?</li>.*?'ttRating'>'''
-        r'''(?P<rating>.*?)</div>.*?'''
-        r'''<p>(?P<description>.*?)</p>.*?'''
-        r'''Tags</h4><ul>(?P<tags>.*?)</ul>''',
+        r'''.*?iconYear'>(?P<year>.*?)(?: - .*?)?</li>.*?'tt'''
+        r'''Rating'>(?P<rating>.*?)</div>.*?'''
+        r'''<p>(?P<description>.*?)</p>''',
         re.DOTALL
     )
     pattern_2 = re.compile(
+        r'''<li>(?P<studio>.*?)</li><li class='iconYear'>'''
+    )
+    pattern_3 = re.compile(
         r'Alt title: (?P<alt_title>.*?)</h6>'
     )
+    patter_4 = re.compile(
+        r'Tags</h4><ul>(?P<tags>.*?)</ul>'
+    )
 
-    def add_alt_title(page):
-        if re.search(pattern_2, page) is None:
-            return 'No alternative titles'
+    def add_exceptions(pattern, page, string, groupdict_name):
+        if re.search(pattern, page) is None:
+            return 'No {} found'.format(string)
         else:
-            return re.search(pattern_2, page).groupdict()['alt_title']
+            return re.search(pattern, page).groupdict()[groupdict_name]
 
     def make_list_for(string):
         string = string.replace('<li>', '').replace('</li>', ', ')
@@ -80,14 +86,14 @@ def get_data(page):
 
     dict = {}
     dict['title'] = re.search(pattern, page).groupdict()['title']
-    dict['alt_title'] = add_alt_title(page)
+    dict['alt_title'] = add_exceptions(pattern_3, page, 'alternative title', 'alt_title')
     dict['type'] = re.search(pattern, page).groupdict()['type']
     dict['num_of_ep'] = re.search(pattern, page).groupdict()['num_eps']
-    dict['studio'] = re.search(pattern, page).groupdict()['studio']
+    dict['studio'] = add_exceptions(pattern_2, page, 'studio', 'studio')
     dict['year'] = int(re.search(pattern, page).groupdict()['year'])
     dict['rating'] = float(re.search(pattern, page).groupdict()['rating'])
     dict['description'] = re.search(pattern, page).groupdict()['description']
-    dict['tags'] = re.search(pattern, page).groupdict()['tags']
+    dict['tags'] = add_exceptions(patter_4, page, 'tags', 'tags')
 
     # clear data
 
@@ -95,32 +101,15 @@ def get_data(page):
         dict['type'] = dict['type'] + ' Series'
 
     dict['num_of_ep'] = make_intiger_for(dict['num_of_ep'])
-    dict['description'] = dict['description'].replace('&nbsp;', ' ')
+    dict['description'] = html.unescape(dict['description'])
     dict['tags'] = make_list_for(dict['tags'])
     return dict
 
 
-def dicts_in_list(directory, filename):
-    content = read_file_to_string(directory, filename)
+def dicts_in_list(content):
     blocks = cut_into_blocks(content)
     list = [get_data(blocks[i]) for i in range(len(blocks))]
     return list
-
-
-def write_csv(fieldnames, rows, directory, filename):
-    os.makedirs(directory, exist_ok=True)
-    path = os.path.join(directory, filename)
-    with open(path, 'w') as csv_file:
-        writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-        writer.writeheader()
-        for row in rows:
-            writer.writerow(row)
-    return None
-
-
-def write_data_in_csv(fieldnames):
-    rows = dicts_in_list(direktorij, frontpage)
-    return write_csv(fieldnames, rows, direktorij, csv_file)
 
 
 def download_pages(num_of_pages):
@@ -129,3 +118,31 @@ def download_pages(num_of_pages):
         url = 'https://www.anime-planet.com/anime/all?page={}'.format(i)
         save_page(url, filename)
     return None
+
+
+def get_content_on_one_page(num_of_pages):
+    content = ''
+    for i in range(1, num_of_pages + 1):
+        filename = 'anime-planet_page_{}.html'.format(i)
+        content = content + read_file_to_string(direktorij, filename)
+    return content
+
+
+def write_csv(fieldnames, rows, directory, filename):
+    os.makedirs(directory, exist_ok=True)
+    path = os.path.join(directory, filename)
+    with open(path, 'w', encoding='utf-8') as csv_file:
+        writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+        writer.writeheader()
+        for row in rows:
+            writer.writerow(row)
+    return None
+
+
+def write_data_in_csv(fieldnames):
+    rows = dicts_in_list(get_content_on_one_page(50))
+    return write_csv(fieldnames, rows, direktorij_csv, csv_file)
+
+
+content_all = get_content_on_one_page(50)
+d = dicts_in_list(content_all)

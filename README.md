@@ -1,5 +1,4 @@
 # Analiza podatkov
-## Anime
 
 
 Za projektno nalogo pri predmetu Programiranje 1 bom analiziral prvih 50 strani na strani
@@ -30,4 +29,4 @@ Delovne hipoteze:
 * Kateri *studii* izdajo največ anime?
 * Ali so anime, ki so izšli kasneje bolje ocenjeni?
 
-| Najprej sem v datoteki *anime-planet.csv* zajel tudi opis od anime, vendar ker ga ne bom rabil v svojih hipotezah, sem to v kodi odkomentiral.
+> Najprej sem v datoteki anime-planet.csv zajel tudi opis od anime, vendar ker ga ne bom rabil v svojih hipotezah, zato sem to v kodi odkomentiral.

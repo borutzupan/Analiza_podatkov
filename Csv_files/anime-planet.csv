@@ -9,7 +9,7 @@ id,title,alt_title,type,num_of_ep,studio,year,rating
 7966,My Hero Academia 2,Boku no Hero Academia 2,TV Series,25,Bones,2017,4.6
 5219,Gintama Kanketsu-hen: Yorozuya yo Eien Nare,Gintama The Movie: The Final Chapter - Be Forever Yorozuya,Movie,1,Sunrise,2013,4.6
 6879,Gintama (2015),Gintama°,TV Series,51,BN Pictures,2015,4.6
-3701,Steins;Gate,No alternative title found,TV Series,24,WHITE FOX,2011,4.6
+3701,Steins Gate,No alternative title found,TV Series,24,WHITE FOX,2011,4.6
 4336,Hunter x Hunter (2011),No alternative title found,TV Series,148,MADHOUSE,2011,4.6
 1865,Code Geass: Lelouch of the Rebellion R2,Code Geass: Hangyaku no Lelouch R2,TV Series,25,Sunrise,2008,4.6
 8617,March Comes in like a Lion 2nd Season,3-gatsu no Lion 2nd Season,TV Series,22,Shaft,2017,4.6
@@ -75,7 +75,7 @@ id,title,alt_title,type,num_of_ep,studio,year,rating
 4707,Bakuman. 3,No alternative title found,TV Series,25,J.C. Staff,2012,4.5
 9952,Overlord III,No alternative title found,TV Series,13,MADHOUSE,2018,4.5
 2265,Zoku Natsume Yuujinchou,Natsume's Book of Friends Season 2,TV Series,13,Brain's Base,2009,4.5
-4397,Steins;Gate Movie: Load Region of Deja Vu,Steins;Gate Movie: Fuka Ryouiki no Deja vu,Movie,1,WHITE FOX,2013,4.5
+4397,Steins Gate Movie: Load Region of Deja Vu,Steins Gate Movie: Fuka Ryouiki no Deja vu,Movie,1,WHITE FOX,2013,4.5
 3805,Kara no Kyoukai Movie 7: Satsujin Kousatsu (Part 2),The Garden of Sinners Movie 7: Murder Speculation Part B (...not nothing heart.),Movie,1,ufotable,2009,4.5
 8102,The Seven Deadly Sins: Revival of The Commandments,Nanatsu no Taizai: Imashime no Fukkatsu,TV Series,24,A-1 Pictures,2018,4.5
 6039,Parasyte -the maxim-,Kiseijuu: Sei no Kakuritsu,TV Series,24,MADHOUSE,2014,4.5
@@ -87,13 +87,13 @@ id,title,alt_title,type,num_of_ep,studio,year,rating
 9914,Quan Zhi Gao Shou (2018),The King's Avatar (2018),OVA,3,G.CMay Animation & Film,2018,4.5
 8267,Code Geass: Lelouch of the Rebellion Movie 3,No alternative title found,Movie,1,Sunrise,2018,4.5
 5323,Attack on Titan,Shingeki no Kyojin,TV Series,25,Wit Studio,2013,4.5
-7140,Steins;Gate 0,No alternative title found,TV Series,23,WHITE FOX,2018,4.5
+7140,Steins Gate 0,No alternative title found,TV Series,23,WHITE FOX,2018,4.5
 1188,Hellsing Ultimate,No alternative title found,OVA,10,MADHOUSE,2006,4.5
 1053,Mushishi,No alternative title found,TV Series,26,Artland,2005,4.5
 7577,JoJo's Bizarre Adventure: Diamond is Unbreakable,JoJo no Kimyou na Bouken: Diamond wa Kudakenai,TV Series,39,David Production,2016,4.5
 2842,Gintama: Shinyaku Benizakura-hen,Gintama: The Movie,Movie,1,Sunrise,2010,4.5
 7148,Noragami Aragoto,No alternative title found,TV Series,13,Bones,2015,4.5
-4458,Steins;Gate: Egoistic Poriomania,Steins;Gate: Oukoubakko no Poriomania,DVD Special,1,WHITE FOX,2012,4.5
+4458,Steins Gate: Egoistic Poriomania,Steins Gate: Oukoubakko no Poriomania,DVD Special,1,WHITE FOX,2012,4.5
 6087,Barakamon,No alternative title found,TV Series,12,Kinema Citrus,2014,4.5
 9802,That Time I Got Reincarnated as a Slime,Tensei Shitara Slime Datta Ken,TV Series,5,8-Bit,2018,4.5
 566,Ghost in the Shell: Stand Alone Complex 2nd Gig,No alternative title found,TV Series,26,Production I.G,2004,4.5
@@ -314,7 +314,7 @@ id,title,alt_title,type,num_of_ep,studio,year,rating
 5900,JoJo's Bizarre Adventure: Stardust Crusaders,JoJo no Kimyou na Bouken: Stardust Crusaders,TV Series,24,David Production,2014,4.3
 4862,From the New World,Shin Sekai Yori,TV Series,25,A-1 Pictures,2012,4.3
 6655,Working!!!,Wagnaria!!3,TV Series,13,A-1 Pictures,2015,4.3
-8829,Steins;Gate: Kyoukaimenjou no Missing Link - Divide By Zero,No alternative title found,DVD Special,1,WHITE FOX,2015,4.3
+8829,Steins Gate: Kyoukaimenjou no Missing Link - Divide By Zero,No alternative title found,DVD Special,1,WHITE FOX,2015,4.3
 2685,InuYasha: The Final Act,No alternative title found,TV Series,26,Sunrise,2009,4.3
 6624,Junjou Romantica 3,No alternative title found,TV Series,12,Studio Deen,2015,4.3
 3281,Bakuman.,No alternative title found,TV Series,25,J.C. Staff,2010,4.3
@@ -397,7 +397,7 @@ id,title,alt_title,type,num_of_ep,studio,year,rating
 8302,"Night is Short, Walk On Girl",Yoru wa Mijikashi Aruke yo Otome,Movie,1,Science SARU,2017,4.3
 8597,Hozuki's Coolheadedness 2nd Season,Hozuki no Reitetsu 2nd Season,TV Series,13,Studio Deen,2017,4.3
 2252,Prince of Tennis: National Championship Final,Tennis no Ouji-sama: Zenkoku Taikai-hen Final,OVA,7,No studio found,2008,4.3
-6543,One Piece: &quot;3D2Y&quot;,No alternative title found,TV Special Series,1,Toei Animation,2014,4.3
+6543,"One Piece: ""3D2Y""",No alternative title found,TV Special Series,1,Toei Animation,2014,4.3
 2688,Tentai Senshi Sunred 2,No alternative title found,TV Series,26,AIC A.S.T.A.,2009,4.3
 1689,Master Keaton OVA,No alternative title found,OVA,15,MADHOUSE,1999,4.3
 6646,Shirobako,No alternative title found,TV Series,24,P.A. Works,2014,4.3
@@ -940,7 +940,7 @@ id,title,alt_title,type,num_of_ep,studio,year,rating
 3737,Fairy Tail OVA,No alternative title found,OVA,5,Satelight,2011,4.1
 764,Genshiken,No alternative title found,TV Series,12,Palm Studio,2004,4.1
 4990,To Love Ru: Darkness,No alternative title found,TV Series,12,XEBEC,2012,4.1
-5027,Say &quot;I love you.&quot;,Suki-tte Ii na yo.,TV Series,13,Zexcs,2012,4.1
+5027,"Say ""I love you.""",Suki-tte Ii na yo.,TV Series,13,Zexcs,2012,4.1
 7803,Super Lovers OVA,No alternative title found,OVA,2,Studio Deen,2017,4.1
 4337,A Letter to Momo,Momo e no Tegami,Movie,1,Production I.G,2011,4.1
 5149,Persona 4 the Animation: The Factor of Hope,No alternative title found,Movie,1,AIC A.S.T.A.,2012,4.1
@@ -1012,7 +1012,7 @@ id,title,alt_title,type,num_of_ep,studio,year,rating
 3412,Air Gear: Kuro no Hane to Nemuri no Mori -Break on the Sky-,No alternative title found,OVA,3,Satelight,2010,4.1
 7579,New Game!,No alternative title found,TV Series,12,Doga Kobo,2016,4.1
 3617,Mitsudomoe Special,No alternative title found,DVD Special,1,Bridge,2011,4.1
-2061,Zero no Tsukaima: Princess no Rondo,The Familiar of Zero: &quot;Rondo&quot; of Princesses,TV Series,12,J.C. Staff,2008,4.1
+2061,Zero no Tsukaima: Princess no Rondo,"The Familiar of Zero: ""Rondo"" of Princesses",TV Series,12,J.C. Staff,2008,4.1
 870,One Piece Movie 4: Dead End Adventure,No alternative title found,Movie,1,Toei Animation,2003,4.1
 3618,Ore no Imouto ga Konna ni Kawaii Wake ga Nai Specials,Oreimo Specials,DVD Special,4,AIC Build,2011,4.1
 2982,Professor Layton and the Eternal Diva,Layton Kyouju to Eien no Utahime,Movie,1,OLM,2009,4.1
@@ -1260,7 +1260,7 @@ id,title,alt_title,type,num_of_ep,studio,year,rating
 1774,Freedom,No alternative title found,OVA,7,Sunrise,2006,4.0
 7778,Scum's Wish,Kuzu no Honkai,TV Series,12,Lerche,2017,4.0
 8960,How to Keep a Mummy,Miira no Kaikata,TV Series,12,8-Bit,2018,4.0
-5189,Traveling Daru,Tabisuru Nuigurumi: Traveling &quot;Daru&quot;,OVA,1,CoMix Wave Inc.,2012,4.0
+5189,Traveling Daru,"Tabisuru Nuigurumi: Traveling ""Daru""",OVA,1,CoMix Wave Inc.,2012,4.0
 8432,Yoake Tsugeru Lu no Uta,Lu Over the Wall,Movie,1,Science SARU,2017,4.0
 4515,Prince of Tennis: Another Story II ~Ano Toki no Bokura,No alternative title found,OVA,4,No studio found,2011,4.0
 3126,Welcome to THE SPACE SHOW,Uchuu Show e Youkoso,Movie,1,A-1 Pictures,2010,4.0

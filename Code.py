@@ -94,10 +94,13 @@ def get_data(page):
     # dict['description'] = re.search(pattern, page).groupdict()['description']
 
     # clear data
-
     if 'TV' in dict['type']:
         dict['type'] = dict['type'] + ' Series'
 
+    dict['title'] = html.unescape(dict['title'])
+    dict['title'] = dict['title'].replace(';', ' ')
+    dict['alt_title'] = html.unescape(dict['alt_title'])
+    dict['alt_title'] = dict['alt_title'].replace(';', ' ')
     dict['num_of_ep'] = make_intiger_for(dict['num_of_ep'])
     # dict['description'] = html.unescape(dict['description'])
     return dict

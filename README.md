@@ -5,6 +5,7 @@ Analiziral bom prvih 1500 anime na strani
 [Anime-planet](https://www.anime-planet.com/anime/all).
 
 Za vsako mango bom zajel:
+* id
 * naslov
 * studio
 * število episod

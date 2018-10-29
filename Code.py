@@ -42,7 +42,7 @@ def read_file_to_string(directory, filename):
 
 def cut_into_blocks(page):
     pattern = re.compile(
-        r'(<a title="<h5>.*?)<div class="crop">',
+        r'(<li data-id=".*?".*?<a title="<h5>.*?)<div class="crop">',
         re.DOTALL
     )
     return [x.group(1).strip() for x in re.finditer(pattern, page)]
@@ -50,6 +50,7 @@ def cut_into_blocks(page):
 
 def get_data(page):
     pattern = re.compile(
+        r'''<li data-id="(?P<id>.*?)".*?'''
         r'''<a title="<h5>(?P<title>.*?)</h5>.*?'''
         r'''<li class='type'>(?P<type>.*?) \((?P<num_eps>.*?)\)</li>'''
         r'''.*?iconYear'>(?P<year>.*?)(?: - .*?)?</li>.*?'tt'''
@@ -86,6 +87,7 @@ def get_data(page):
         return int(string)
 
     dict = {}
+    dict['id'] = int(re.search(pattern, page).groupdict()['id'])
     dict['title'] = re.search(pattern, page).groupdict()['title']
     dict['alt_title'] = add_exceptions(pattern_3, page, 'alternative title', 'alt_title')
     dict['type'] = re.search(pattern, page).groupdict()['type']

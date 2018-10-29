@@ -22,7 +22,7 @@ Za projektno nalogo pri predmetu Programiranje 1 bom analiziral prvih 50 strani 
 
 **3.** V mapi **Pages** sem shranil vse strani, ki sem jih naložil.
 
-**4.** Dodal sem tudi datoteki *Code.py* in *tags.py*, s katerima sem vse podatke pobral s spleta.
+**4.** Dodal sem tudi datoteki *Code.py* in *tags.py*, s katerima sem vse podatke shranil v csv in json datoteke, in datoteko *save.py*, s katero sem naložil in shranil spletne strani v html obliki.
 
 Delovne hipoteze:
 * Ali obstaja povezava med *številom episod* in *žanrom*?

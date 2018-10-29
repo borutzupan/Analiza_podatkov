@@ -4,11 +4,13 @@ import csv
 import os
 import html
 import sys
+import tags
 
-url = 'https://www.anime-planet.com/anime/all'
-directory_p = 'Analiza_podatkov_pages'
-directory_csv = 'Analiza_podatkov_csv'
+first_page_url = 'https://www.anime-planet.com/anime/all'
+directory_p = 'Pages'
+directory_csv = 'Csv_files'
 csv_file = 'anime-planet.csv'
+csv_tags = 'anime-planet_tags.csv'
 frontpage = 'anime-planet.html'
 
 
@@ -64,21 +66,12 @@ def get_data(page):
     pattern_3 = re.compile(
         r'Alt title: (?P<alt_title>.*?)</h6>'
     )
-    patter_4 = re.compile(
-        r'Tags</h4><ul>(?P<tags>.*?)</ul>'
-    )
 
     def add_exceptions(pattern, page, string, groupdict_name):
         if re.search(pattern, page) is None:
             return 'No {} found'.format(string)
         else:
             return re.search(pattern, page).groupdict()[groupdict_name]
-
-    def make_list_for(string):
-        string = string.replace('<li>', '').replace('</li>', ', ')
-        string = string.strip()[:-1]
-        string = string.split(', ')
-        return string
 
     def make_intiger_for(string):
         string = string.replace(' eps', '')
@@ -96,7 +89,6 @@ def get_data(page):
     dict['year'] = int(re.search(pattern, page).groupdict()['year'])
     dict['rating'] = float(re.search(pattern, page).groupdict()['rating'])
     dict['description'] = re.search(pattern, page).groupdict()['description']
-    dict['tags'] = add_exceptions(patter_4, page, 'tags', 'tags')
 
     # clear data
 
@@ -105,13 +97,12 @@ def get_data(page):
 
     dict['num_of_ep'] = make_intiger_for(dict['num_of_ep'])
     dict['description'] = html.unescape(dict['description'])
-    dict['tags'] = make_list_for(dict['tags'])
     return dict
 
 
-def dicts_in_list(content):
+def dicts_in_list(content, function_for_getting_data):
     blocks = cut_into_blocks(content)
-    list = [get_data(blocks[i]) for i in range(len(blocks))]
+    list = [function_for_getting_data(blocks[i]) for i in range(len(blocks))]
     return list
 
 
@@ -149,10 +140,12 @@ def write_csv(fieldnames, rows, directory, filename):
     return None
 
 
-def write_data_in_csv(fieldnames):
-    rows = dicts_in_list(get_content_on_one_page(50))
-    return write_csv(fieldnames, rows, directory_csv, csv_file)
+def write_data_in_csv(fieldnames, list, csv_filename):
+    return write_csv(fieldnames, list, directory_csv, csv_filename)
 
 
-content_all = get_content_on_one_page(50)
-d = dicts_in_list(content_all)
+# content_all = get_content_on_one_page(50)
+# d = dicts_in_list(content_all, get_data)
+# keys_d = d[0].keys()
+# l = tags.make_tags_list(content_all)
+# keys_l = l[0].keys()

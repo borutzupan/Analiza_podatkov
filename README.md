@@ -2,7 +2,7 @@
 
 
 Za projektno nalogo pri predmetu Programiranje 1 bom analiziral prvih 50 strani na strani
-[Anime-planet](https://www.anime-planet.com/anime/all) glede na popularnost. Uredil jih bom v csv in json datoteke.
+[Anime-planet](https://www.anime-planet.com/anime/all) glede na popularnost. Podatke sem uredil v csv in json datoteke. 
 
 
 1. V mapi **Csv_files** so shranjene naslednje datoteke:
@@ -22,6 +22,8 @@ Za projektno nalogo pri predmetu Programiranje 1 bom analiziral prvih 50 strani 
 
 3. v mapi **Pages** sem shranil vse strani, ki sem jih naložil
 
+Dodal sem tudi datoteki *Code.py* in *tags.py*, s katerima sem vse podatke pobral s spleta.
+
 Delovne hipoteze:
 * Ali obstaja povezava med *številom episod* in *žanrom*?
 * Kateri *studii* so najbolj ocenjeni?
@@ -29,4 +31,4 @@ Delovne hipoteze:
 * Kateri *studii* izdajo največ anime?
 * Ali so anime, ki so izšli kasneje bolje ocenjeni?
 
-> Najprej sem v datoteki anime-planet.csv zajel tudi opis od anime, vendar ker ga ne bom rabil v svojih hipotezah sem to v kodi odkomentiral.
+> Najprej sem v datoteki *anime-planet.csv* zajel tudi opis od anime, vendar ker ga ne bom rabil v svojih hipotezah sem to v kodi odkomentiral.

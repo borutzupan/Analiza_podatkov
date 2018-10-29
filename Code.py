@@ -5,12 +5,15 @@ import os
 import html
 import sys
 import tags
+import json
 
 first_page_url = 'https://www.anime-planet.com/anime/all'
 directory_p = 'Pages'
 directory_csv = 'Csv_files'
+directory_json = 'Json'
 csv_file = 'anime-planet.csv'
 csv_tags = 'anime-planet_tags.csv'
+json_file = 'anime-planet.json'
 frontpage = 'anime-planet.html'
 
 
@@ -88,7 +91,7 @@ def get_data(page):
     dict['studio'] = add_exceptions(pattern_2, page, 'studio', 'studio')
     dict['year'] = int(re.search(pattern, page).groupdict()['year'])
     dict['rating'] = float(re.search(pattern, page).groupdict()['rating'])
-    dict['description'] = re.search(pattern, page).groupdict()['description']
+    # dict['description'] = re.search(pattern, page).groupdict()['description']
 
     # clear data
 
@@ -96,7 +99,7 @@ def get_data(page):
         dict['type'] = dict['type'] + ' Series'
 
     dict['num_of_ep'] = make_intiger_for(dict['num_of_ep'])
-    dict['description'] = html.unescape(dict['description'])
+    # dict['description'] = html.unescape(dict['description'])
     return dict
 
 
@@ -144,8 +147,20 @@ def write_data_in_csv(fieldnames, list, csv_filename):
     return write_csv(fieldnames, list, directory_csv, csv_filename)
 
 
-# content_all = get_content_on_one_page(50)
-# d = dicts_in_list(content_all, get_data)
+def write_json(list, directory, filename):
+    '''Iz danega objekta ustvari JSON datoteko.'''
+    os.makedirs(directory, exist_ok=True)
+    path = os.path.join(directory, filename)
+    with open(path, 'w', encoding='utf-8') as json_file:
+        json.dump(list, json_file, indent=4, ensure_ascii=False)
+    return None
+
+
+content_all = get_content_on_one_page(50)
+d = dicts_in_list(content_all, get_data)
 # keys_d = d[0].keys()
-# l = tags.make_tags_list(content_all)
+l = tags.make_tags_list(content_all)
 # keys_l = l[0].keys()
+write_data_in_csv(d[0].keys(), d, csv_file)
+write_data_in_csv(l[0].keys(), l, csv_tags)
+write_json(d, directory_json, json_file)

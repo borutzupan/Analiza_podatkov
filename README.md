@@ -28,7 +28,7 @@ Delovne hipoteze:
 * Ali obstaja povezava med *številom episod* in *žanrom*?
 * Kateri *studii* so najbolj ocenjeni?
 * Kateri anime z določeno *oznako* so najslabše ocenjene?
-* Kateri *studii* izdajo največ anime?
+* Kateri *studii* so izdali največ epizod?
 * Ali so anime, ki so izšli kasneje bolje ocenjeni?
 
 > Najprej sem v datoteki *anime-planet.csv* zajel tudi opis od anime, ki pa ga ne bom uporabljal in sem ga zato v kodi zakomentiral.

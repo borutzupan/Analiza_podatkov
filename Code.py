@@ -8,6 +8,7 @@ import json
 import tags
 from save import download_pages
 
+
 first_page_url = 'https://www.anime-planet.com/anime/all'
 directory_p = 'Pages'
 directory_csv = 'Csv_files'
@@ -24,6 +25,14 @@ def read_file_to_string(directory, filename):
         return file_in.read()
 
 
+def get_content_on_one_page(num_of_pages):
+    content = ''
+    for i in range(1, num_of_pages + 1):
+        filename = 'anime-planet_page_{}.html'.format(i)
+        content = content + read_file_to_string(directory_p, filename)
+    return content
+
+
 def cut_into_blocks(page):
     pattern = re.compile(
         r'(<li data-id=".*?".*?<a title="<h5>.*?)<div class="crop">',
@@ -32,23 +41,30 @@ def cut_into_blocks(page):
     return [x.group(1).strip() for x in re.finditer(pattern, page)]
 
 
-def get_data(page):
-    pattern = re.compile(
-        r'''<li data-id="(?P<id>.*?)".*?'''
-        r'''<a title="<h5>(?P<title>.*?)</h5>.*?'''
-        r'''<li class='type'>(?P<type>.*?) \((?P<num_eps>.*?)\)</li>'''
-        r'''.*?iconYear'>(?P<year>.*?)(?: - .*?)?</li>.*?'tt'''
-        r'''Rating'>(?P<rating>.*?)</div>.*?'''
-        r'''<p>(?P<description>.*?)</p>''',
-        re.DOTALL
-    )
-    pattern_2 = re.compile(
-        r'''<li>(?P<studio>.*?)</li><li class='iconYear'>'''
-    )
-    pattern_3 = re.compile(
-        r'Alt title: (?P<alt_title>.*?)</h6>'
-    )
+def dicts_in_list(content, function_for_getting_data):
+    blocks = cut_into_blocks(content)
+    list = [function_for_getting_data(blocks[i]) for i in range(len(blocks))]
+    return list
 
+
+pattern = re.compile(
+    r'''<li data-id="(?P<id>.*?)".*?'''
+    r'''<a title="<h5>(?P<title>.*?)</h5>.*?'''
+    r'''<li class='type'>(?P<type>.*?) \((?P<num_eps>.*?)\)</li>'''
+    r'''.*?iconYear'>(?P<year>.*?)(?: - .*?)?</li>.*?'tt'''
+    r'''Rating'>(?P<rating>.*?)</div>.*?'''
+    r'''<p>(?P<description>.*?)</p>''',
+    re.DOTALL
+)
+pattern_studio = re.compile(
+    r'''<li>(?P<studio>.*?)</li><li class='iconYear'>'''
+)
+pattern_at = re.compile(
+    r'Alt title: (?P<alt_title>.*?)</h6>'
+)
+
+
+def get_data(page):
     def add_exceptions(pattern, page, string, groupdict_name):
         if re.search(pattern, page) is None:
             return 'No {} found'.format(string)
@@ -64,10 +80,10 @@ def get_data(page):
     dict = {}
     dict['id'] = int(re.search(pattern, page).groupdict()['id'])
     dict['title'] = re.search(pattern, page).groupdict()['title']
-    dict['alt_title'] = add_exceptions(pattern_3, page, 'alternative title', 'alt_title')
+    dict['alt_title'] = add_exceptions(pattern_at, page, 'alternative title', 'alt_title')
     dict['type'] = re.search(pattern, page).groupdict()['type']
     dict['num_of_ep'] = re.search(pattern, page).groupdict()['num_eps']
-    dict['studio'] = add_exceptions(pattern_2, page, 'studio', 'studio')
+    dict['studio'] = add_exceptions(pattern_studio, page, 'studio', 'studio')
     dict['year'] = int(re.search(pattern, page).groupdict()['year'])
     dict['rating'] = float(re.search(pattern, page).groupdict()['rating'])
     # dict['description'] = re.search(pattern, page).groupdict()['description']
@@ -85,20 +101,6 @@ def get_data(page):
     return dict
 
 
-def dicts_in_list(content, function_for_getting_data):
-    blocks = cut_into_blocks(content)
-    list = [function_for_getting_data(blocks[i]) for i in range(len(blocks))]
-    return list
-
-
-def get_content_on_one_page(num_of_pages):
-    content = ''
-    for i in range(1, num_of_pages + 1):
-        filename = 'anime-planet_page_{}.html'.format(i)
-        content = content + read_file_to_string(directory_p, filename)
-    return content
-
-
 def write_csv(fieldnames, rows, directory, filename):
     os.makedirs(directory, exist_ok=True)
     path = os.path.join(directory, filename)
@@ -110,12 +112,7 @@ def write_csv(fieldnames, rows, directory, filename):
     return None
 
 
-def write_data_in_csv(fieldnames, list, csv_filename):
-    return write_csv(fieldnames, list, directory_csv, csv_filename)
-
-
 def write_json(list, directory, filename):
-    '''Iz danega objekta ustvari JSON datoteko.'''
     os.makedirs(directory, exist_ok=True)
     path = os.path.join(directory, filename)
     with open(path, 'w', encoding='utf-8') as json_file:
@@ -126,9 +123,7 @@ def write_json(list, directory, filename):
 download_pages(50)
 content_all = get_content_on_one_page(50)
 d = dicts_in_list(content_all, get_data)
-# keys_d = d[0].keys()
 l = tags.make_tags_list(content_all)
-# keys_l = l[0].keys()
-write_data_in_csv(d[0].keys(), d, csv_file)
-write_data_in_csv(l[0].keys(), l, csv_tags)
+write_csv(d[0].keys(), d, directory_csv, csv_file)
+write_csv(l[0].keys(), l, directory_csv, csv_tags)
 write_json(d, directory_json, json_file)

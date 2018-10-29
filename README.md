@@ -31,4 +31,4 @@ Delovne hipoteze:
 * Kateri *studii* izdajo največ anime?
 * Ali so anime, ki so izšli kasneje bolje ocenjeni?
 
-> Najprej sem v datoteki *anime-planet.csv* zajel tudi opis od anime, vendar ker ga ne bom rabil v svojih hipotezah, sem to v kodi odkomentiral.
+> Najprej sem v datoteki *anime-planet.csv* zajel tudi opis od anime, ki pa ga ne bom uporabljal in sem ga zato v kodi zakomentiral.

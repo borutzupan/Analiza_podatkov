@@ -1,7 +1,7 @@
 # Analiza podatkov
 
 
-Za projektno nalogo pri predmetu Programiranje 1 bom analiziral prvih 50 strani na strani
+Za projektno nalogo pri predmetu Programiranje 1 bom analiziral prvih 50 strani na spletni strani
 [Anime-planet](https://www.anime-planet.com/anime/all) glede na popularnost. Podatke sem uredil v csv in json datoteke. 
 
 
@@ -18,7 +18,7 @@ Za projektno nalogo pri predmetu Programiranje 1 bom analiziral prvih 50 strani 
 
 
 **2.** V mapi **Json** je shranjena datoteka:
-- *anime-planet.json*, kjer sem zajel vse, kar sem zajel v datoteki *anime-planet.csv* v json obliki.
+- *anime-planet.json*, kjer sem zajel iste podatke kot v datoteki *anime-planet.csv*, vendar v json obliki.
 
 **3.** V mapi **Pages** sem shranil vse strani, ki sem jih naložil.
 
@@ -31,4 +31,4 @@ Delovne hipoteze:
 * Kateri *studii* izdajo največ anime?
 * Ali so anime, ki so izšli kasneje bolje ocenjeni?
 
-> Najprej sem v datoteki *anime-planet.csv* zajel tudi opis od anime, vendar ker ga ne bom rabil v svojih hipotezah sem to v kodi odkomentiral.
+> Najprej sem v datoteki *anime-planet.csv* zajel tudi opis od anime, vendar ker ga ne bom rabil v svojih hipotezah, sem to v kodi odkomentiral.

@@ -4,8 +4,9 @@ import csv
 import os
 import html
 import sys
-import tags
 import json
+import tags
+from save import download_pages
 
 first_page_url = 'https://www.anime-planet.com/anime/all'
 directory_p = 'Pages'
@@ -15,28 +16,6 @@ csv_file = 'anime-planet.csv'
 csv_tags = 'anime-planet_tags.csv'
 json_file = 'anime-planet.json'
 frontpage = 'anime-planet.html'
-
-
-def download_url_to_string(url):
-    try:
-        r = requests.get(url)
-    except requests.exceptions.ConnectionError:
-        print('Could not access page ' + url)
-        return ''
-    return r.text
-
-
-def save_string_to_file(text, directory, filename):
-    os.makedirs(directory, exist_ok=True)
-    path = os.path.join(directory, filename)
-    with open(path, 'w', encoding='utf-8') as file_out:
-        file_out.write(text)
-    return None
-
-
-def save_page(url, filename):
-    text = download_url_to_string(url)
-    return save_string_to_file(text, directory_p, filename)
 
 
 def read_file_to_string(directory, filename):
@@ -112,21 +91,6 @@ def dicts_in_list(content, function_for_getting_data):
     return list
 
 
-def download_pages(num_of_pages):
-    for i in range(1, num_of_pages + 1):
-        filename = frontpage[:-5] + '_page_{}'.format(i) + frontpage[-5:]
-        url = 'https://www.anime-planet.com/anime/all?page={}'.format(i)
-        path = os.path.join(directory_p, filename)
-        print('Shranjujem {} ...'.format(url), end='')
-        sys.stdout.flush()
-        if os.path.isfile(path) is True:
-            print(' Shranjeno že od prej!')
-        else:
-            save_page(url, filename)
-            print(' Shranjeno!')
-    return None
-
-
 def get_content_on_one_page(num_of_pages):
     content = ''
     for i in range(1, num_of_pages + 1):
@@ -159,6 +123,7 @@ def write_json(list, directory, filename):
     return None
 
 
+download_pages(50)
 content_all = get_content_on_one_page(50)
 d = dicts_in_list(content_all, get_data)
 # keys_d = d[0].keys()

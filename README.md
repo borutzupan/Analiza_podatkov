@@ -18,7 +18,7 @@ Za projektno nalogo pri predmetu Programiranje 1 bom analiziral prvih 50 strani 
 
 
 **2.** V mapi **Json** je shranjena datoteka:
-- *anime-planet.json*, kjer sem zajel iste podatke kot v datoteki *anime-planet.csv*, vendar v json obliki.
+- *anime-planet.json*, kjer sem v jason obliki zajel iste podatke kot v datoteki *anime-planet.csv*.
 
 **3.** V mapi **Pages** sem shranil vse strani, ki sem jih naložil.
 

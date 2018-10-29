@@ -18,11 +18,11 @@ Za projektno nalogo pri predmetu Programiranje 1 bom analiziral prvih 50 strani 
 
 
 **2.** V mapi **Json** je shranjena datoteka:
-- *anime-planet.json*, kjer sem zajel vse, kar sem zajel v datoteki *anime-planet.csv* v json obliki
+- *anime-planet.json*, kjer sem zajel vse, kar sem zajel v datoteki *anime-planet.csv* v json obliki.
 
-**3.** v mapi **Pages** sem shranil vse strani, ki sem jih naložil
+**3.** V mapi **Pages** sem shranil vse strani, ki sem jih naložil.
 
-Dodal sem tudi datoteki *Code.py* in *tags.py*, s katerima sem vse podatke pobral s spleta.
+**4.** Dodal sem tudi datoteki *Code.py* in *tags.py*, s katerima sem vse podatke pobral s spleta.
 
 Delovne hipoteze:
 * Ali obstaja povezava med *številom episod* in *žanrom*?

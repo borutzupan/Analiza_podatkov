@@ -3,10 +3,11 @@ import re
 import csv
 import os
 import html
+import sys
 
-spletna_stran = 'https://www.anime-planet.com/anime/all'
-direktorij = 'Analiza_podatkov_pages'
-direktorij_csv = 'Analiza_podatkov_csv'
+url = 'https://www.anime-planet.com/anime/all'
+directory_p = 'Analiza_podatkov_pages'
+directory_csv = 'Analiza_podatkov_csv'
 csv_file = 'anime-planet.csv'
 frontpage = 'anime-planet.html'
 
@@ -30,7 +31,7 @@ def save_string_to_file(text, directory, filename):
 
 def save_page(url, filename):
     text = download_url_to_string(url)
-    return save_string_to_file(text, direktorij, filename)
+    return save_string_to_file(text, directory_p, filename)
 
 
 def read_file_to_string(directory, filename):
@@ -116,7 +117,14 @@ def download_pages(num_of_pages):
     for i in range(1, num_of_pages + 1):
         filename = frontpage[:-5] + '_page_{}'.format(i) + frontpage[-5:]
         url = 'https://www.anime-planet.com/anime/all?page={}'.format(i)
-        save_page(url, filename)
+        path = os.path.join(directory_p, filename)
+        print('Shranjujem {} ...'.format(url), end='')
+        sys.stdout.flush()
+        if os.path.isfile(path) is True:
+            print(' Shranjeno že od prej!')
+        else:
+            save_page(url, filename)
+            print(' Shranjeno!')
     return None
 
 
@@ -124,7 +132,7 @@ def get_content_on_one_page(num_of_pages):
     content = ''
     for i in range(1, num_of_pages + 1):
         filename = 'anime-planet_page_{}.html'.format(i)
-        content = content + read_file_to_string(direktorij, filename)
+        content = content + read_file_to_string(directory_p, filename)
     return content
 
 
@@ -141,7 +149,7 @@ def write_csv(fieldnames, rows, directory, filename):
 
 def write_data_in_csv(fieldnames):
     rows = dicts_in_list(get_content_on_one_page(50))
-    return write_csv(fieldnames, rows, direktorij_csv, csv_file)
+    return write_csv(fieldnames, rows, directory_csv, csv_file)
 
 
 content_all = get_content_on_one_page(50)

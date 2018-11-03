@@ -8,7 +8,8 @@ Za projektno nalogo pri predmetu Programiranje 1 bom analiziral prvih 50 strani 
 **1.** V mapi **Csv_files** so shranjene naslednje datoteke:
 - *anime-planet.csv*, kjer sem zajel:
   * id
-  * naslov
+  * naslov (tudi alternativni naslov)
+  * tip
   * studio
   * število epizod
   * leto izida

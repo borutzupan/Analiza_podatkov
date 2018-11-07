@@ -26,7 +26,7 @@ Za projektno nalogo pri predmetu Programiranje 1 bom analiziral prvih 50 strani 
 
 Delovne hipoteze:
 * Ali obstaja povezava med *številom episod* in *žanrom*?
-* Kateri *studii* so najbolj ocenjeni?
+* Kateri *studii* imajo največ najbolje ocenjenih filmov?
 * Kateri anime z določeno *oznako* so najslabše ocenjene?
 * Kateri *studii* so izdali največ epizod?
 * Ali so anime, ki so izšli kasneje bolje ocenjeni?

@@ -26,10 +26,10 @@ Za projektno nalogo pri predmetu Programiranje 1 bom analiziral prvih 50 strani 
 **4.** Dodal sem tudi datoteki *Code.py* in *tags.py*, s katerima sem vse podatke shranil v csv in json datoteke, in datoteko *save.py*, s katero sem naložil in shranil spletne strani v html obliki.
 
 Delovne hipoteze:
-* Ali obstaja povezava med *številom episod* in *žanrom*?
+* Kateri *žanri* so najbolj popularni?
 * Kateri *studii* imajo največ najbolje ocenjenih filmov?
-* Kateri anime z določeno *oznako* so najslabše ocenjene?
+* Ali so anime z več *epizod* bolje ocenjeni?
 * Kateri *studii* so izdali največ epizod?
-* Ali so anime, ki so izšli kasneje bolje ocenjeni?
+* Ali imajo anime, ki so izšli kasneje več *epizod*?
 
 > Najprej sem v datoteki *anime-planet.csv* zajel tudi opis od anime, ki pa ga ne bom uporabljal in sem ga zato v kodi zakomentiral.

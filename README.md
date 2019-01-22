@@ -21,7 +21,7 @@ Za projektno nalogo pri predmetu Programiranje 1 bom analiziral prvih 50 strani 
 **2.** V mapi **Json** je shranjena datoteka:
 - *anime-planet.json*, kjer sem v jason obliki zajel iste podatke kot v datoteki *anime-planet.csv*.
 
-**3.** V mapi **Pages** sem shranil vse strani, ki sem jih naložil.
+**3.** V mapi **Pages** sem shranil vse strani, ki sem jih naložil. Ker se ta stran konstantno spreminja, so morebiti podatki na straneh že sedaj drugačni. Če hočete dobiti nove podatke, jih boste morali ponovno naložiti in shraniti v csv in json datoteke.
 
 **4.** Dodal sem tudi datoteki *Code.py* in *tags.py*, s katerima sem vse podatke shranil v csv in json datoteke, in datoteko *save.py*, s katero sem naložil in shranil spletne strani v html obliki.
 
